@@ -4,7 +4,8 @@
   "description": "",
   "main": "js/example.js",
   "scripts": {
-    "test": "jest --json --outputFile=js/output.json"
+    "test": "jest --json --outputFile=js/output.json",
+    "php-exec": "php ./php/example.php > ./php/output.txt"
   },
   "repository": {
     "type": "git",
