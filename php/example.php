@@ -17,4 +17,6 @@ function output()
 }
 
 $test = output();
-fwrite(STDOUT, $test);
+
+// Output to standard out.
+fwrite();
