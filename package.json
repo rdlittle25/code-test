@@ -1,0 +1,23 @@
+{
+  "name": "code-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/example.js",
+  "scripts": {
+    "test": "jest --json --outputFile=js/output.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Southtree/code-test.git"
+  },
+  "keywords": [],
+  "author": "Dave Lowther <david@southtree.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Southtree/code-test/issues"
+  },
+  "homepage": "https://github.com/Southtree/code-test#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
