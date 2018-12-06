@@ -1,6 +1,17 @@
 <?php
 
 try {
+    /**
+     * Stricter error handling.
+     */
+    function errorHandler($severity, $messge, $file, $line) {
+        throw new ErrorException($message, 0, $severity, $file, $line);
+    }
+    set_error_handler("errorHandler");
+
+    /**
+     * Function to be corrected.
+     */
     function output()
     {
         $group = [
@@ -26,6 +37,6 @@ try {
     fwrite();
 } catch (Throwable $e) {
     $class = get_class($e);
-    $msg = "{$class} ({$e->getCode()}): {$e->getMessage()} at {$e->getLine()}";
-    error_log($msg, 0, 'php://stdout');
+    $msg = "{$class}({$e->getCode()}): {$e->getMessage()} at ln:{$e->getLine()}";
+    error_log($msg);
 }
