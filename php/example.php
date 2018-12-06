@@ -10,13 +10,18 @@ function output()
     ]
 
     foreach ($group as $key => value) {
-        echo '{$key}: {$value}'
+        echo '{$key}: {$value}\n'
     }
 
-    return json_encode($group);
+    $output = json_encode($group);
+    if (($jsonError = json_last_error()) > 0)
 }
 
-$test = output();
+try {
+    $test = output();
 
-// Output to standard out.
-fwrite();
+    // Output to standard out.
+    fwrite();
+} catch (Exception $e) {
+    error_log($e);
+}
