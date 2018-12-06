@@ -1,2 +1,0 @@
-
-Parse error: syntax error, unexpected '"testFour"' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in /Users/davelowther/Projects/Southtree/code-test/php/example.php on line 21
