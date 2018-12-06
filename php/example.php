@@ -14,7 +14,9 @@ function output()
     }
 
     $output = json_encode($group);
-    if (($jsonError = json_last_error()) > 0)
+    if (($jsonError = json_last_error()) > 0) {
+        throw new Exception('Invalid JSON Output');
+    }
 }
 
 try {
@@ -23,5 +25,5 @@ try {
     // Output to standard out.
     fwrite();
 } catch (Exception $e) {
-    error_log($e);
+    error_log($e, 0, 'php://stdout');
 }
