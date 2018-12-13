@@ -4,7 +4,7 @@ try {
     /**
      * Stricter error handling.
      */
-    function errorHandler($severity, $messge, $file, $line) {
+    function errorHandler($severity, $message, $file, $line) {
         throw new ErrorException($message, 0, $severity, $file, $line);
     }
     set_error_handler("errorHandler");
@@ -16,13 +16,14 @@ try {
     {
         $group = [
             "testOne" => 1,
-            "testTwo" => [ two => 2, ],
-            "testThree" => [3,]
-            "testFour" => FOUR,
-        ]
+            "testTwo" => [ "two" => 2],
+            "testThree" => [3],
+            "testFour" => "FOUR",
+        ];
 
-        foreach ($group as $key => value) {
-            echo '{$key}: {$value}\n'
+        foreach ($group as $key => $value) {
+
+			array_echo($key, $value);
         }
 
         $output = json_encode($group);
@@ -31,10 +32,26 @@ try {
         }
     }
 
+	function array_echo($key, $value)
+	{
+		if(is_array($value))
+		{
+			echo "{$key}: \n";
+		    foreach ($value as $subkey => $subvalue) 
+			{
+				array_echo($subkey, $subvalue);
+		    }
+		}
+		else
+		{
+			echo "{$key}: {$value}\n"; 
+		}
+	}
+
     $test = output();
 
     // Output to standard out.
-    fwrite();
+    fwrite(STDOUT, $test);
 } catch (Throwable $e) {
     $class = get_class($e);
     $msg = "{$class}({$e->getCode()}): {$e->getMessage()} at ln:{$e->getLine()}";
